@@ -1,0 +1,155 @@
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roald dahl</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css?v=1.27" rel="stylesheet">
+</head>
+<body>
+
+    <section class="header" id="HOME">
+        <div class="menu">
+          <a href="#Home">головна</a>
+          <a href="#About">про книгу</a>
+          <a href="#Gallery">галерея</a>
+          <a href="#Inter">інтерактив</a>
+          <a href="#Illustrator">ілюстратор</a>
+        </div>
+        <div class="text">
+          Роальд Даль дає можливість<br>
+          дітям відчути себе дорослими, а<br>
+          дорослим - відчути себе дітьми.<br>
+          І ті та інші стають кращими!<br>
+          Нелегко втримати дитину за<br>
+          книгою, коли в сусідній кімнаті є<br>
+          телевізор. <strong>Але як чудово спро-<br>
+          бувати це зробити!</strong>
+        </div>
+        <img src="images/main.jpg">
+    </section>
+    <section class="about" id="About">
+        
+        <div id="slider">
+         <figure>
+           <img src="images/book.jpg">
+         </figure>
+        </div>
+    </section>
+    <section class="gallery" id="Gallery">
+      <div class="blocks">
+          <div class="col-md-6">
+              <img onclick='getimg(this)' src="images/gal1.jpg">
+          </div>
+          <div  class="col-md-6">
+              <img onclick='getimg(this)' src="images/gal3.jpg">
+          </div>
+          <div class="col-md-6">
+              <img onclick='getimg(this)' src="images/gal2.jpg">
+          </div>
+          <div class="col-md-6">
+              <img onclick='getimg(this)' src="images/gal4.jpg">
+          </div>
+      </div>
+    </section>
+    <section class="inter" id="Inter"></section>
+    <section class="interbg">
+      <img src="images/layer1.png">
+    </section>
+    <section class="illustrator" id="Illustrator">
+       <div class="blocks">
+           <div class="col-md-8">
+               <img id='lust' src="images/lyst.png">
+              <img class='lyst' src="images/illust_bg.jpg">
+          </div>
+            <div id="atext" class="col-md-4">
+              
+              софія лупул: живу у<br>
+              львові, займаюся ілю-<br>
+              страцією та фотографі-<br>
+              єю, перш за все для<br>
+              мене є справжність і<br>
+              цікавість. вона формує<br>
+              нашу творчість, нашу<br>
+              любов до життя
+             
+          </div>
+        </div>
+    </section>
+    
+
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>    
+
+<script src="https://rekl.be/js/jquery.min.js"></script>
+<script src="https://rekl.be/js/bootstrap.min.js"></script>
+<script>
+
+$(function() {
+	"use strict";
+
+       
+    
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+}); 
+
+ 
+$(window).scroll(function(){
+  $('.interbg').each(function(){
+    if(!isScrolledIntoView($(this))){
+      if(document.getElementById('Inter').innerHTML == '') {
+                document.getElementById('Inter').innerHTML = "<img src=\"images/layer2.png\"> <img src=\"images/layer3.png\"><img src=\"images/layer4.png\"><img src=\"images/layer5.png\"><img src=\"images/layer6.png\"><img src=\"images/layer7.png\"><img src=\"images/layer8.png\"><img src=\"images/layer9.png\">"
+      }
+    }
+  });
+});
+
+function isScrolledIntoView(elem){
+    var $elem = $(elem);
+    var $window = $(window);
+
+    var docViewTop = $window.scrollTop();
+    var docViewBottom = docViewTop + $window.height();
+
+    var elemTop = $elem.offset().top;
+    var elemBottom = elemTop + $elem.height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop + 25));
+}    
+    
+var modal = document.getElementById('myModal');
+
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+    
+function getimg(id){
+    modal.style.display = "block";
+    modalImg.src = id.src;
+    captionText.innerHTML = id.alt;
+}
+
+var span = document.getElementsByClassName("close")[0];
+    
+span.onclick = function() { 
+    modal.style.display = "none";
+}
+</script>
+
+</body>
+</html>
